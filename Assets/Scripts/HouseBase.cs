@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//This Script only contains what each house does for itself.
+// A main script will query the variables to do greater calculations.
+
+public class HouseBase : MonoBehaviour
+{
+    //Active hours, Power consuption per hour (day/night)
+    //For active hours, 0 is midnight, 23 is 11 pm. This is multiplied by the ticks per day and stuff for calculations.
+    [SerializeField] public float activeHoursStart;
+    [SerializeField] public float activeHoursEnd;
+    [SerializeField] public float extraActiveHour;
+    [SerializeField] public float powerConsumptionActive;
+    [SerializeField] public float powerConsumptionInactive;
+
+    //STATICS: DO NOT CHANGE WITH CODE. READ ONLY.
+    private float TICK = 10.0f;
+    private float TICK_PER_HOUR = 24.0f;
+    private float powerConsumptionMin = 7.0f;
+    private float powerConsumptionMax = 40.0f;
+
+    // Gets written to.
+    public float currentPowerConsumption;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Randomise active hours start.
+        Random rd = new Random();
+        activeHoursStart = float(rd.next(5, 11));
+
+        //Randomise a time and set start + time as the end.
+        activeHoursEnd = activeHoursStart + (float(rd.next(15, 18)));
+        if(activeHoursEnd>24.0f)
+        {
+            activeHoursEnd = activeHoursEnd % 24;
+        }
+
+        //Randomise an extra active hour
+        extraActiveHour = float(rd.next(0, 24));
+
+        //Randomise power consumptions
+        powerConsumptionActive = rd.next(powerConsumptionMin, powerConsumptionMax);
+        powerConsumptionInactive = rd.next(0.1f, powerConsumptionMin);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+
+}
