@@ -67,11 +67,18 @@ public class PowerStationBase : MonoBehaviour
             timeInterval = 0.0f;
         }
     }
+    void PowerOffStation()
+    {
+        isStationOn = false;
+        currentStorage = currentStorage + currentOutputPerTick;
+        currentOutputPerTick = 0.0f;
+    }
     void BreakStation()
     {
         isStationBroken = true;
         isStationOn = false;
         currentOutputPerTick = 0.0f;
+        currentStorage = 0.0f;
     }
     void RepairedStation()
     {
