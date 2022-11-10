@@ -9,6 +9,7 @@ public class PowerStationBase : MonoBehaviour
 {
     //MAKE SURE TIME MEASURED THINGS ARE IN THE SAME MAGNITUDE AS TICKS
 
+    [SerializeField] public string displayName;
     [SerializeField] public float outputPerTick;
     public float currentOutputPerTick;
 
