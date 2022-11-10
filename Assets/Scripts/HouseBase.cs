@@ -28,22 +28,22 @@ public class HouseBase : MonoBehaviour
     void Start()
     {
         //Randomise active hours start.
-        Random rd = new Random();
-        activeHoursStart = float(rd.next(5, 11));
+        Random.InitState(System.DateTime.Now.Millisecond);
+        activeHoursStart = (float)(Random.Range(5, 11));
 
         //Randomise a time and set start + time as the end.
-        activeHoursEnd = activeHoursStart + (float(rd.next(15, 18)));
+        activeHoursEnd = activeHoursStart + (float)(Random.Range(15, 18));
         if(activeHoursEnd>24.0f)
         {
             activeHoursEnd = activeHoursEnd % 24;
         }
 
         //Randomise an extra active hour
-        extraActiveHour = float(rd.next(0, 24));
+        extraActiveHour = (float)(Random.Range(0, 24));
 
         //Randomise power consumptions
-        powerConsumptionActive = rd.next(powerConsumptionMin, powerConsumptionMax);
-        powerConsumptionInactive = rd.next(0.1f, powerConsumptionMin);
+        powerConsumptionActive = Random.Range(powerConsumptionMin, powerConsumptionMax);
+        powerConsumptionInactive = Random.Range(0.1f, powerConsumptionMin);
     }
 
     // Update is called once per frame
