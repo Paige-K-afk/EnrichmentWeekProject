@@ -24,26 +24,41 @@ public class HouseBase : MonoBehaviour
     // Gets written to.
     public float currentPowerConsumption;
 
+    // boolean for management.
+    public bool isBuisness = false;//Changes generation from random to set.
+
     // Start is called before the first frame update
     void Start()
     {
-        //Randomise active hours start.
-        Random.InitState(System.DateTime.Now.Millisecond);
-        activeHoursStart = (float)(Random.Range(5, 11));
-
-        //Randomise a time and set start + time as the end.
-        activeHoursEnd = activeHoursStart + (float)(Random.Range(15, 18));
-        if(activeHoursEnd>24.0f)
+        if (!isBuisness)
         {
-            activeHoursEnd = activeHoursEnd % 24;
+            //Randomise active hours start.
+            Random.InitState(System.DateTime.Now.Millisecond);
+            activeHoursStart = (float)(Random.Range(5, 11));
+
+            //Randomise a time and set start + time as the end.
+            activeHoursEnd = activeHoursStart + (float)(Random.Range(15, 18));
+            if (activeHoursEnd > 24.0f)
+            {
+                activeHoursEnd = activeHoursEnd % 24;
+            }
+
+            //Randomise an extra active hour
+            extraActiveHour = (float)(Random.Range(0, 24));
+
+            //Randomise power consumptions
+            powerConsumptionActive = Random.Range(powerConsumptionMin, powerConsumptionMax);
+            powerConsumptionInactive = Random.Range(0.1f, powerConsumptionMin);
         }
-
-        //Randomise an extra active hour
-        extraActiveHour = (float)(Random.Range(0, 24));
-
-        //Randomise power consumptions
-        powerConsumptionActive = Random.Range(powerConsumptionMin, powerConsumptionMax);
-        powerConsumptionInactive = Random.Range(0.1f, powerConsumptionMin);
+        else
+        {
+            activeHoursStart = 9.0f;
+            activeHoursEnd = 6.0f;
+            powerConsumptionActive = powerConsumptionMax * 10;
+            powerConsumptionInactive = powerConsumptionMin * 10;
+            extraActiveHour = 8.0f;
+        }
+        
     }
 
     // Update is called once per frame
