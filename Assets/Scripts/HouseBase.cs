@@ -49,7 +49,8 @@ public class HouseBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       // check time
+       // adjust consumption accordingly
     }
 
 
