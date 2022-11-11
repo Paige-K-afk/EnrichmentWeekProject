@@ -17,7 +17,7 @@ public class HouseBase : MonoBehaviour
 
     //STATICS: DO NOT CHANGE WITH CODE. READ ONLY.
     private float TICK = 10.0f;
-    private float TICK_PER_HOUR = 24.0f;
+    private float TICK_PER_DAY = 24.0f;
     private float powerConsumptionMin = 7.0f;
     private float powerConsumptionMax = 40.0f;
 
@@ -26,6 +26,8 @@ public class HouseBase : MonoBehaviour
 
     // boolean for management.
     public bool isBuisness = false;//Changes generation from random to set.
+
+    public GameObject clockObject;
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +66,20 @@ public class HouseBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // check time
-       // adjust consumption accordingly
+       // check time and adjust consumption accordingly
+       if(clockObject.GetComponent<Clock>().currentHour == (int)activeHoursStart)
+       {
+            currentPowerConsumption = powerConsumptionActive;
+       }
+       else
+       {
+            currentPowerConsumption = powerConsumptionInactive;
+       }
+       if(clockObject.GetComponent<Clock>().currentHour == (int)extraActiveHour)
+       {
+            currentPowerConsumption = powerConsumptionActive;
+       }
+       
     }
 
 
