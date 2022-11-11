@@ -16,6 +16,8 @@ public class UsageAndProduction : MonoBehaviour
     [SerializeField] public TMP_Text powerGenerationLabel;
     [SerializeField] public TMP_Text powerStorageLabel;
 
+    [SerializeField] private float GRID;//Only serialised to be readable in editor.
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class UsageAndProduction : MonoBehaviour
         {
             powerGeneration = powerGeneration + powerStation.GetComponent<PowerStationBase>().currentOutputPerTick;
             powerStorage = powerStorage + powerStation.GetComponent<PowerStationBase>().currentStorage;
-            Debug.Log(arrayOfStations[0]);
+            //Debug.Log(arrayOfStations[0]);
         }
     }
     void GetTotalPowerConsumption()
@@ -52,7 +54,7 @@ public class UsageAndProduction : MonoBehaviour
         foreach(GameObject house in arrayOfHouses)
         {
             powerConsumption = powerConsumption + house.GetComponent<HouseBase>().currentPowerConsumption;
-            Debug.Log(arrayOfHouses[0]);
+            //Debug.Log(arrayOfHouses[0]);
         }
     }
 }
