@@ -14,9 +14,10 @@ public class PowerStationBase : MonoBehaviour
     [SerializeField] public float outputPerTick;
     public float currentOutputPerTick;
 
-    [SerializeField] public float startupTime;
+    [SerializeField] public float startupTime; //Ticks taken to start up
     [SerializeField] public float outputDuration; // for things that can only output for x time before it runs out, like the pumped storage
-    private float cooldown;
+    [SerializeField] private float cooldown; // The cooldown in ticks for how long it has to stay down.
+    private float _cooldownTimer;
     [SerializeField] public float storageCapacity; // for when it makes too much and has to store it
     public float currentStorage; //How much power it has in excess.
     [SerializeField] public float CostToDeploy;
@@ -25,6 +26,7 @@ public class PowerStationBase : MonoBehaviour
     public bool isStationOn = false;
     public bool isStationBroken = false;
     public bool isConnectedToGrid = false;
+    public bool isAutoOnOff = false;
 
     private float timeInterval;
     private float powerOverTime;
@@ -36,8 +38,9 @@ public class PowerStationBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _cooldownTimer = 0.0f;
         _timeIntervalMet = false;
-        cooldown = 12 * TICK;
+        cooldown = cooldown * TICK;
         currentOutputPerTick = 0;
         currentStorage = 0;
         if (startupTime > 0){powerOverTime = outputPerTick / startupTime;}
@@ -94,16 +97,31 @@ public class PowerStationBase : MonoBehaviour
         //anything else needing the tick I can think of
         if(_timeIntervalMet)
         { timeInterval = 0.0f; }
+
+        if(!isStationOn)
+        {
+            _cooldownTimer += Time.deltaTime;
+        }
+        if(isAutoOnOff)
+        {
+            if(_cooldownTimer>= cooldown)
+            {
+                PowerOnStation();
+            }
+        }
     }
 
     void PowerOnStation()
     {
-        if(!isStationBroken)
+        if(_cooldownTimer>= cooldown)
         {
-            // called when other script tells this to power the station on.
-            isStationOn = true;
-            timeInterval = 0.0f;
-            upTime = 0.0f;
+            if(!isStationBroken)
+            {
+                // called when other script tells this to power the station on.
+                isStationOn = true;
+                timeInterval = 0.0f;
+                upTime = 0.0f;
+            }
         }
     }
     void PowerOffStation()
@@ -112,6 +130,7 @@ public class PowerStationBase : MonoBehaviour
         currentStorage = currentStorage + currentOutputPerTick;
         currentOutputPerTick = 0.0f;
         upTime = 0.0f;
+        _cooldownTimer = 0.0f;
     }
     void BreakStation()
     {
