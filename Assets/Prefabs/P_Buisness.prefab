@@ -214,6 +214,7 @@ MonoBehaviour:
   powerConsumptionInactive: 0
   currentPowerConsumption: 0
   isBuisness: 1
+  clockObject: {fileID: 5751481247025906205, guid: d00d44ae197d2364c994fe25499fc05b, type: 3}
 --- !u!1001 &4846562287625868732
 PrefabInstance:
   m_ObjectHideFlags: 0
