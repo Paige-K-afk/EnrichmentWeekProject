@@ -532,6 +532,7 @@ MonoBehaviour:
   powerConsumptionLabel: {fileID: 1899993688}
   powerGenerationLabel: {fileID: 507513781}
   powerStorageLabel: {fileID: 1885583737}
+  GRID: 0
 --- !u!4 &1362821732
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,7 +1445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 200482306316019876, guid: 7d1b6c82a99faa34e8e20f4d4c23bc5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -134
       objectReference: {fileID: 0}
     - target: {fileID: 200482306316019876, guid: 7d1b6c82a99faa34e8e20f4d4c23bc5d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1452,7 +1453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 200482306316019876, guid: 7d1b6c82a99faa34e8e20f4d4c23bc5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -16.1
       objectReference: {fileID: 0}
     - target: {fileID: 200482306316019876, guid: 7d1b6c82a99faa34e8e20f4d4c23bc5d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1507,7 +1508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6280462568673672244, guid: f5abcc2325c86114883fb626bb3287b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: -176
       objectReference: {fileID: 0}
     - target: {fileID: 6280462568673672244, guid: f5abcc2325c86114883fb626bb3287b4, type: 3}
       propertyPath: m_LocalPosition.y

@@ -86,6 +86,9 @@ public class PowerStationBase : MonoBehaviour
                 }
                 _timeIntervalMet = true;
             }
+            
+            //Anything else that needs to be done on tick:
+        
         }
 
         //anything else needing the tick I can think of
