@@ -193,7 +193,7 @@ Transform:
   - {fileID: 6280462567792245672}
   - {fileID: 6280462568013076068}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6280462568673672247
 MonoBehaviour:
@@ -208,15 +208,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Base Station
-  outputPerTick: 0
+  outputPerTick: 400
   currentOutputPerTick: 0
-  startupTime: 0
+  startupTime: 1
   outputDuration: 0
-  storageCapacity: 0
+  storageCapacity: 4000
   currentStorage: 0
   CostToDeploy: 0
-  CostToRepair: 0
-  priceOfElectricity: 0
+  CostToRepair: 2000
+  priceOfElectricity: 10
   isStationOn: 0
   isStationBroken: 0
   isConnectedToGrid: 0
